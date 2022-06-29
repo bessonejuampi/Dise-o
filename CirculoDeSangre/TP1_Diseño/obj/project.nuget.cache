@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "I/d/pzRztA4u6efAbCxazIDDNcTAfmZIehPosKaoLaMmlAquu0WQEWV41+5qrhw6/j1sn15iKMLdWnCj6dpRkQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Usuario\\source\\repos\\TP1-DS-CirculoDeSangre\\TP1_Diseño\\TP1_Diseño.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Usuario\\.nuget\\packages\\fluentvalidation\\11.0.1\\fluentvalidation.11.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
