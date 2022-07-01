@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">pobreTITO</string>
+    <string name="text_error">Este campo es obligatorio</string>
+</resources>
