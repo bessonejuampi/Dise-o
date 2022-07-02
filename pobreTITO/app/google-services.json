@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "146440039551",
+    "project_id": "pobretito-systemdesing",
+    "storage_bucket": "pobretito-systemdesing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146440039551:android:0237989e21428bd9fb634a",
+        "android_client_info": {
+          "package_name": "com.utn.pobreTITO"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146440039551-4i7nfhguh2ij6ngtsphp0jtq08dg6jqb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.utn.pobreTITO",
+            "certificate_hash": "fd346d42eff5835d37b8ba6eb591cefd6bdbad54"
+          }
+        },
+        {
+          "client_id": "146440039551-k4quebsedckt0dn36cg46fl0oangp3qf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWJbl196D-ZglOVAGqv8vI8ErV__iZ96Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146440039551-k4quebsedckt0dn36cg46fl0oangp3qf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

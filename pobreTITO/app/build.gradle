@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+
 }
 
 android {
@@ -54,7 +55,12 @@ dependencies {
     implementation 'androidx.room:room-rxjava2:2.4.2'
     kapt ('androidx.room:room-compiler:2.4.2')
     implementation 'androidx.room:room-ktx:2.4.2'
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
 
-    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
-    implementation "io.reactivex.rxjava2:rxjava:2.2.9"
 }
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'

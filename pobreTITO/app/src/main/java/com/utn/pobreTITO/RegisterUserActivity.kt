@@ -26,7 +26,7 @@ class RegisterUserActivity : AppCompatActivity() {
 
         binding.btRegister.setOnClickListener {
             viewModel!!.ValidationNewUser(
-                binding.tfDni.editText?.text.toString(),
+                binding.tfEmail.editText?.text.toString(),
                 binding.etName.text.toString(),
                 binding.etSurname.text.toString(),
                 binding.etPass.text.toString()
@@ -38,8 +38,8 @@ class RegisterUserActivity : AppCompatActivity() {
 
     private fun setupViewModelObserver() {
         viewModel?.dataValidationMutable?.observe(this, Observer { dataValidation -> dataValidation?.let {
-            if(!dataValidation.dniError.isNullOrEmpty()){
-                binding.tfDni.error = dataValidation.dniError
+            if(!dataValidation.emailError.isNullOrEmpty()){
+                binding.tfEmail.error = dataValidation.emailError
             }
             if(!dataValidation.nameError.isNullOrEmpty()){
                 binding.tfName.error = dataValidation.nameError
@@ -66,9 +66,9 @@ class RegisterUserActivity : AppCompatActivity() {
                 // Nothing use
             }
         })
-        binding.etDni.addTextChangedListener(object : TextWatcher {
+        binding.etEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                binding.tfDni.error = null
+                binding.tfEmail.error = null
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 // Nothing use

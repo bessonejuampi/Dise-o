@@ -47,13 +47,13 @@
         tools:layout_editor_absoluteX="8dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tfDni"
+            android:id="@+id/tfEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Dni"
+            android:hint="Email"
             app:errorEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDni"
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>

@@ -11,7 +11,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/llLogIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -77,6 +77,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
