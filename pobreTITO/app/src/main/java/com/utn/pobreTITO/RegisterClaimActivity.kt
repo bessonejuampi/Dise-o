@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import com.utn.pobreTITO.databinding.ActivityRegisterClaimBinding
@@ -20,6 +21,10 @@ class RegisterClaimActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = RegisterClaimViewModel(this)
+
+        if (supportActionBar != null) {
+            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        }
 
         val bundle : Bundle? = intent.extras
         setupAdapter()
@@ -107,5 +112,10 @@ class RegisterClaimActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId === android.R.id.home) { onBackPressed() }
+        return super.onOptionsItemSelected(item)
     }
 }

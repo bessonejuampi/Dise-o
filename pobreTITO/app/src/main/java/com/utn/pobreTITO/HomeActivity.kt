@@ -3,6 +3,7 @@ package com.utn.pobreTITO
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import com.utn.pobreTITO.databinding.ActivityHomeBinding
 import com.utn.pobreTITO.viewmodels.HomeViewModel
 
@@ -17,6 +18,10 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel = HomeViewModel(this)
 
+        if (supportActionBar != null) {
+            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        }
+
         val bundle : Bundle? = intent.extras
 
         viewModel!!.saveSession(bundle?.getString("email").toString(), bundle?.getString("pass").toString())
@@ -29,5 +34,10 @@ class HomeActivity : AppCompatActivity() {
         binding.btRegisterClaim.setOnClickListener {
             viewModel!!.goToRegisterClaim()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId === android.R.id.home) { onBackPressed() }
+        return super.onOptionsItemSelected(item)
     }
 }

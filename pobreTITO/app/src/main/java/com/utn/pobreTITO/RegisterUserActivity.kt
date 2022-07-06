@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import com.utn.pobreTITO.databinding.ActivityRegisterUserBinding
 import com.utn.pobreTITO.viewmodels.RegisterUserViewModel
@@ -110,5 +111,10 @@ class RegisterUserActivity : AppCompatActivity() {
                 // Nothing use
             }
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId === android.R.id.home) { onBackPressed() }
+        return super.onOptionsItemSelected(item)
     }
 }

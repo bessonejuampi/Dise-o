@@ -23,6 +23,7 @@
             android:name=".RegisterUserActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.PobreTITO"
             android:name=".LogInActivity"
             android:exported="true"
             android:noHistory="true">
