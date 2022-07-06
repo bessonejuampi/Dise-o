@@ -25,5 +25,9 @@ class HomeActivity : AppCompatActivity() {
             viewModel!!.signOutUser()
             onBackPressed()
         }
+
+        binding.btRegisterClaim.setOnClickListener {
+            viewModel!!.goToRegisterClaim()
+        }
     }
 }

@@ -2,4 +2,14 @@
     <string name="app_name">pobreTITO</string>
     <string name="text_error">Este campo es obligatorio</string>
     <string name="prefs_file">prefs_flie</string>
+    <string-array name="categories">
+        <item>Alumbrado público</item>
+        <item>Cloaca</item>
+        <item>Servicios públicos</item>
+        <item>Espectáculos públicos</item>
+        <item>Infraestructura</item>
+        <item>Medio ambiente</item>
+        <item>Obras y viviendas</item>
+        <item>Tránsito</item>
+    </string-array>
 </resources>

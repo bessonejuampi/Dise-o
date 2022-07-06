@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.utn.pobreTITO.HomeActivity
 import com.utn.pobreTITO.R
 import com.utn.pobreTITO.common.DataValidator
@@ -36,13 +38,14 @@ class RegisterUserViewModel(private val context: Context) : ViewModel() {
                 dataValidator.passError = context.getString(R.string.text_error)
             }
             if(dataValidator.isSuccessfully()){
+                saveInDatabase(email.toString(), name.toString(), surname.toString(), pass.toString())
                 RegisterNewUser(email.toString(), pass.toString())
             }
             dataValidationMutable.value = dataValidator
         }
     }
 
-    fun RegisterNewUser(email : String, pass: String){
+    private fun RegisterNewUser(email : String, pass: String){
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
             if (it.isSuccessful){
                 Toast.makeText(context, "¡Registro existoso!", Toast.LENGTH_SHORT).show()
@@ -54,10 +57,20 @@ class RegisterUserViewModel(private val context: Context) : ViewModel() {
         }
     }
 
-    fun goToHome(email: String, pass: String){
+    private fun goToHome(email: String, pass: String){
         val intent = Intent(context, HomeActivity::class.java)
         intent.putExtra("email", email)
         intent.putExtra("pass",pass)
         context.startActivity(intent)
     }
+
+    private fun saveInDatabase(email:String, name: String, surname: String, pass:String){
+        val db =FirebaseFirestore.getInstance()
+        db.collection("user").document(email).set(
+            hashMapOf("name" to name,
+            "surname" to surname,
+            pass to pass)
+        )
+    }
+
 }
