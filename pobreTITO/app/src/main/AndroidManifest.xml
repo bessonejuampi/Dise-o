@@ -23,10 +23,10 @@
             android:name=".RegisterUserActivity"
             android:exported="false" />
         <activity
-            android:theme="@style/Theme.PobreTITO"
             android:name=".LogInActivity"
             android:exported="true"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:theme="@style/Theme.PobreTITO">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
