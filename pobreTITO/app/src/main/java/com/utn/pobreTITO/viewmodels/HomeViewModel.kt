@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.utn.pobreTITO.MyClaimsActivity
+import com.utn.pobreTITO.ProfileActivity
 import com.utn.pobreTITO.R
 import com.utn.pobreTITO.RegisterClaimActivity
 
@@ -34,5 +36,19 @@ class HomeViewModel(private val context: Context) : ViewModel() {
         context.startActivity(intent)
     }
 
+    fun goToProfile(){
+        val intent = Intent(context, ProfileActivity::class.java)
+        val prefs : SharedPreferences = context.getSharedPreferences(context.getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val email = prefs.getString("email", null)
+        intent.putExtra("email", email)
+        context.startActivity(intent)
+    }
 
+    fun goToMyClaims(){
+        val intent = Intent(context, MyClaimsActivity::class.java)
+        val prefs : SharedPreferences = context.getSharedPreferences(context.getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val email = prefs.getString("email", null)
+        intent.putExtra("email", email)
+        context.startActivity(intent)
+    }
 }

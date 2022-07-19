@@ -10,7 +10,7 @@
             android:title="Mi perfil"
             android:checked="true" />
         <item
-            android:id="@+id/cliam"
+            android:id="@+id/myClaims"
             android:icon="@drawable/ic_baseline_speaker_notes_24"
             android:title="Mis reclamos" />
     </group>

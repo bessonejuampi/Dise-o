@@ -39,7 +39,7 @@ class RegisterClaimViewModel(private val context : Context) : ViewModel() {
                 val claim = Claim(title, category, description, direction, EnumCodition.ENVIADA.toString(), email_id)
                 registerClaim(claim)
                 Toast.makeText(context, "¡Reclamo registrado!", Toast.LENGTH_SHORT).show()
-                goToHome()
+                goToHome(email_id)
             }
 
             validatornCalimMutable.value = validatorClaim
@@ -51,8 +51,9 @@ class RegisterClaimViewModel(private val context : Context) : ViewModel() {
         database?.claimDAO()?.InsertClaim(claim)
     }
 
-    private fun goToHome(){
+    private fun goToHome(email : String){
         val intent = Intent(context, HomeActivity::class.java)
+        intent.putExtra(context.getString(R.string.title_email), email)
         context.startActivity(intent)
     }
 }

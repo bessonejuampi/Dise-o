@@ -5,9 +5,10 @@ class DataValidator {
     var nameError : String? = null
     var surnameError: String? = null
     var passError : String? = null
+    var dniError : String? = null
 
     fun isSuccessfully(): Boolean {
         return nameError.isNullOrEmpty() && emailError.isNullOrEmpty() && surnameError.isNullOrEmpty()
-                && passError.isNullOrEmpty()
+                && passError.isNullOrEmpty() && dniError.isNullOrEmpty()
     }
 }

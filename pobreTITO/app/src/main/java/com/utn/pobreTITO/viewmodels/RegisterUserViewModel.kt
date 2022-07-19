@@ -22,7 +22,7 @@ class RegisterUserViewModel(private val context: Context) : ViewModel() {
 
     var dataValidationMutable = MutableLiveData<DataValidator?>()
 
-    fun ValidationNewUser(email:String?, name:String?, surname:String?, pass:String?) {
+    fun ValidationNewUser(email:String?, name:String?, surname:String?, pass:String?, dni : String) {
         viewModelScope.launch {
             var dataValidator = DataValidator()
             if(!name.validateText()){
@@ -37,8 +37,12 @@ class RegisterUserViewModel(private val context: Context) : ViewModel() {
             if(!pass.validateText()){
                 dataValidator.passError = context.getString(R.string.text_error)
             }
+
+            if(!dni.validateText()){
+                dataValidator.dniError = context.getString(R.string.text_error)
+            }
             if(dataValidator.isSuccessfully()){
-                saveInDatabase(email.toString(), name.toString(), surname.toString(), pass.toString())
+                saveInDatabase(email.toString(), name.toString(), surname.toString(), pass.toString(), dni)
                 RegisterNewUser(email.toString(), pass.toString())
             }
             dataValidationMutable.value = dataValidator
@@ -64,12 +68,13 @@ class RegisterUserViewModel(private val context: Context) : ViewModel() {
         context.startActivity(intent)
     }
 
-    private fun saveInDatabase(email:String, name: String, surname: String, pass:String){
+    private fun saveInDatabase(email:String, name: String, surname: String, pass:String, dni: String){
         val db =FirebaseFirestore.getInstance()
         db.collection("user").document(email).set(
             hashMapOf("name" to name,
             "surname" to surname,
-            pass to pass)
+            "pass" to pass,
+            "dni" to dni)
         )
     }
 

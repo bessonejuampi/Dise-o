@@ -2,6 +2,7 @@
     <string name="app_name">pobreTITO</string>
     <string name="text_error">Este campo es obligatorio</string>
     <string name="prefs_file">prefs_flie</string>
+    <string name="title_email">email</string>
     <string-array name="categories">
         <item>Alumbrado público</item>
         <item>Cloaca</item>

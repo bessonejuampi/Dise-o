@@ -30,7 +30,8 @@ class RegisterUserActivity : AppCompatActivity() {
                 binding.tfEmail.editText?.text.toString(),
                 binding.etName.text.toString(),
                 binding.etSurname.text.toString(),
-                binding.etPass.text.toString()
+                binding.etPass.text.toString(),
+                binding.etDni.text.toString()
             )
         }
         setupViewModelObserver()
@@ -50,6 +51,9 @@ class RegisterUserActivity : AppCompatActivity() {
             }
             if(!dataValidation.passError.isNullOrEmpty()){
                 binding.tfPass.error = dataValidation.passError
+            }
+            if(!dataValidation.dniError.isNullOrEmpty()){
+                binding.tfDni.error = dataValidation.dniError
             }
         }
         })
@@ -103,6 +107,17 @@ class RegisterUserActivity : AppCompatActivity() {
         binding.etPass.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 binding.tfPass.error = null
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                // Nothing use
+            }
+            override fun afterTextChanged(p0: Editable?) {
+                // Nothing use
+            }
+        })
+        binding.etDni.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                binding.tfDni.error = null
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 // Nothing use
