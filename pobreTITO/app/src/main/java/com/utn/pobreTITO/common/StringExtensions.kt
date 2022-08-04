@@ -21,7 +21,3 @@ fun String?.validateText(): Boolean {
     return !this.isNullOrEmpty()
 }
 
-fun validateEmail(email: String): Boolean {
-    val pattern: Pattern = Patterns.EMAIL_ADDRESS
-    return pattern.matcher(email).matches()
-}

@@ -19,8 +19,8 @@ class ProfileActivity : AppCompatActivity() {
         val user : User = database?.userDAO()?.getUser(bundle?.getString("email").toString())!!
 
         binding.tvName.text = "Nombre: ${user.name}"
-        binding.tvEmail.text = "Nombre: ${user.email}"
-        binding.tvSurname.text = "Nombre: ${user.surname}"
-        binding.tvDni.text = "Nombre: ${user.dni}"
+        binding.tvEmail.text = "Email: ${user.email}"
+        binding.tvSurname.text = "Apellido: ${user.surname}"
+        binding.tvDni.text = "DNI: ${user.dni}"
     }
 }

@@ -44,7 +44,6 @@ class LogInViewModel(private val context: Context):ViewModel() {
         }else{
             Toast.makeText(context, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     fun VerifylogIn(){

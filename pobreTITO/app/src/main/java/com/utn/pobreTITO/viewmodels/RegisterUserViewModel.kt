@@ -2,21 +2,18 @@ package com.utn.pobreTITO.viewmodels
 
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
+import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.utn.pobreTITO.HomeActivity
 import com.utn.pobreTITO.R
 import com.utn.pobreTITO.common.DataValidator
-import com.utn.pobreTITO.common.isNumber
 import com.utn.pobreTITO.common.validateText
 import com.utn.pobreTITO.database.AppDatabase
 import com.utn.pobreTITO.models.User
 import kotlinx.coroutines.launch
+import java.util.regex.Pattern
 
 class RegisterUserViewModel(private val context: Context) : ViewModel() {
 
@@ -28,7 +25,7 @@ class RegisterUserViewModel(private val context: Context) : ViewModel() {
             if(!name.validateText()){
                 dataValidator.nameError = context.getString(R.string.text_error)
             }
-            if(!email.validateText()){
+            if(validateEmail(email!!)){
                 dataValidator.emailError = context.getString(R.string.text_error)
             }
             if(!surname.validateText()){
@@ -46,6 +43,11 @@ class RegisterUserViewModel(private val context: Context) : ViewModel() {
             }
             dataValidationMutable.value = dataValidator
         }
+    }
+
+    fun validateEmail(email: String): Boolean {
+        val pattern: Pattern = Patterns.EMAIL_ADDRESS
+        return !pattern.matcher(email).matches()
     }
 
     private fun RegisterNewUser(email:String, name: String, surname: String, pass:String, dni: String){
