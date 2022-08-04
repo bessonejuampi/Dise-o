@@ -42,23 +42,16 @@ class RegisterUserViewModel(private val context: Context) : ViewModel() {
                 dataValidator.dniError = context.getString(R.string.text_error)
             }
             if(dataValidator.isSuccessfully()){
-                saveInDatabase(email.toString(), name.toString(), surname.toString(), pass.toString(), dni)
-                RegisterNewUser(email.toString(), pass.toString())
+                RegisterNewUser(email.toString(), name.toString(), surname.toString(), pass.toString(), dni)
             }
             dataValidationMutable.value = dataValidator
         }
     }
 
-    private fun RegisterNewUser(email : String, pass: String){
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-            if (it.isSuccessful){
-                Toast.makeText(context, "¡Registro existoso!", Toast.LENGTH_SHORT).show()
-                goToHome(email, pass)
-            }else{
-                Toast.makeText(context, "Se ha producido un error", Toast.LENGTH_SHORT).show()
-            }
-
-        }
+    private fun RegisterNewUser(email:String, name: String, surname: String, pass:String, dni: String){
+        val database = AppDatabase.getInstance(context)
+        database?.userDAO()?.InsertUser(User(dni, name, surname, pass, email))
+        goToHome(email, pass)
     }
 
     private fun goToHome(email: String, pass: String){
@@ -66,16 +59,6 @@ class RegisterUserViewModel(private val context: Context) : ViewModel() {
         intent.putExtra("email", email)
         intent.putExtra("pass",pass)
         context.startActivity(intent)
-    }
-
-    private fun saveInDatabase(email:String, name: String, surname: String, pass:String, dni: String){
-        val db =FirebaseFirestore.getInstance()
-        db.collection("user").document(email).set(
-            hashMapOf("name" to name,
-            "surname" to surname,
-            "pass" to pass,
-            "dni" to dni)
-        )
     }
 
 }

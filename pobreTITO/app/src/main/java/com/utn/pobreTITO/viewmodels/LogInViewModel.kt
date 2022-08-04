@@ -13,6 +13,7 @@ import com.utn.pobreTITO.R
 import com.utn.pobreTITO.RegisterUserActivity
 import com.utn.pobreTITO.common.DataValidator
 import com.utn.pobreTITO.common.validateText
+import com.utn.pobreTITO.database.AppDatabase
 import kotlinx.coroutines.launch
 
 class LogInViewModel(private val context: Context):ViewModel() {
@@ -36,13 +37,14 @@ class LogInViewModel(private val context: Context):ViewModel() {
     }
 
     fun LogIn(email:String, pass:String){
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass).addOnCompleteListener {
-            if (it.isSuccessful){
+        val database = AppDatabase.getInstance(context)
+        val user = database?.userDAO()?.LogIn(email, pass)
+        if (user != null) {
                 goToHome(email, pass)
-            }else{
-                Toast.makeText(context, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
-            }
+        }else{
+            Toast.makeText(context, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
         }
+
     }
 
     fun VerifylogIn(){
