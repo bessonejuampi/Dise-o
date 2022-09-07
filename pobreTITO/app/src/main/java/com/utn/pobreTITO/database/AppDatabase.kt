@@ -1,9 +1,11 @@
 package com.utn.pobreTITO.database
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.AutoMigrationSpec
 import com.utn.pobreTITO.database.dao.claimDAO
 import com.utn.pobreTITO.database.dao.userDAO
 import com.utn.pobreTITO.models.Claim
@@ -11,7 +13,7 @@ import com.utn.pobreTITO.models.User
 
 @Database(entities = [Claim::class, User::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-
+    class MyAutoMigration : AutoMigrationSpec
     abstract fun claimDAO() : claimDAO?
     abstract fun userDAO(): userDAO?
     companion object {
